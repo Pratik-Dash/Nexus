@@ -39,7 +39,7 @@
   width: 6rem;
 }
 
-.action-buttons>button{
+.action-button{
   padding: .5rem;
   background-color: var(--accent);
   border-radius: 3px;
