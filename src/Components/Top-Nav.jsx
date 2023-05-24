@@ -1,11 +1,11 @@
 import {Link} from "react-router-dom"
 export const Nav = () => {
-    return <nav class = "top-nav">
+    return <nav className = "top-nav">
     <Link to="/">
     <div className = "logo">nexus</div>
     </Link>
         
-        <div classname = "search"><input type = "text" className="search-input" placeholder="search..."/>
+        <div className = "search"><input type = "text" className="search-input" placeholder="search..."/>
         <button className="search-button">{`search`}</button>
         </div>
         <div className = "action-buttons">
