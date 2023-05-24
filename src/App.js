@@ -9,12 +9,15 @@ import Cart from "./Pages/Cart";
 import Wishlist from "./Pages/Wishlist";
 import SignIn from "./Pages/SignIn";
 import NotFound from "./Pages/NotFound";
+import Mockman from "mockman-js"
+import { DataContextProvider } from "./Context/DataContext";
 function App() {
   return (
     
     <Router>
     <div className="App">
     <Nav/>
+    <DataContextProvider>
     <Routes>
       <Route path = "/" element = {<Home/>}/>
       <Route path = "/search" element = {<Search/>}/>
@@ -24,8 +27,9 @@ function App() {
       <Route path = "wishlist" element = {<Wishlist/>}/>
       <Route path = "sign-in" element = {<SignIn/>}/>
       <Route path = "*" element = {<NotFound/>}/>
+      <Route path = "/mockman" element = {<Mockman/>}/>
     </Routes>
-      
+    </DataContextProvider>
     </div>
     </Router>
   );

@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import landingHero from "./Images/landingHero.jpg"
-import iphoneHero from "./Images/iphoneHero.jpg"
+import React, { useState } from 'react'
+
 const HeroSlider = () => {
     const [currentIndex,setImageIndex] = useState(0)
     const images = [
       {
-        pic:"https://images.unsplash.com/photo-1563014959-7aaa83350992?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-        altText:"landing pic"
+        pic:"https://cdn2.unrealengine.com/egs-jedi-survivor-carousel-desktop-1280x702-e064efcb1338.jpg?h=720&quality=medium&resize=1&w=1280"
       },
       {
         pic:"https://images.unsplash.com/photo-1526509706191-c268f28e9ecb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
