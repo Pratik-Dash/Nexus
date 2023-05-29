@@ -57,9 +57,10 @@
  
 }
 .slider-container{
-  width: 60%;
+  width: 40rem;
   height: 420px;
-  margin: 0 auto;
+  margin: auto;
+ margin-top: 1rem;
 }
 .slider{
   height: 100%;
@@ -94,7 +95,10 @@
   cursor:pointer
 
 }
-
+.link{
+  text-decoration: none;
+  color: var(--accent);
+}
 .game-tile-container{
  
  display: grid;
@@ -110,15 +114,143 @@
   color: var(--accent);
   font-weight: 700;
   text-align: left;
+  
 }
 .game-thumbnail{
   height: 20rem;
   width: 100%;
   object-fit: cover;
-  
+  border: 1px solid black;
 }
 .game-info{
   text-align: left;
+  /* border: 2px solid var(--accent);
+  padding: 1rem;
+  width: auto; */
+  
+}
+.mini-screenshots{
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}
+.mini-screenshots>div{
+  border: 5px solid black;
+  width: 88px;
+  height: 50px;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+}
+.mini-screenshots>div>img{
+  width: 100px;
+  height: 80px;
+  
+}
+.main-screenshot{
+  height: 10rem;
+  width: 100%;
+}
+.action-buttons{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 100%;
+}
+.action-buttons> button{
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: .5rem;
+  cursor: pointer;
+  
+
+}
+.action-buttons> div{
+  text-align: left;
+}
+.primary{
+  background-color: var(--accent);
+  color: var(--secondary);
+
+}
+.price-tag{
+  width: 100%;
+  text-align: left;
+}
+.product-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  margin: .75rem;
+  
+}
+.game-details{
   width: 100%;
   
+  padding: 1rem;
+  box-sizing: border-box;
+  
+
+}
+.game-details>div{
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid lightgray;
+}
+.selected-product{
+  display: flex;
+  margin: 1rem;
+  justify-content: center;
+  gap: 7rem;
+  
+}
+
+.product-description{
+
+  text-align: left;
+  max-width: 700px;
+}
+.read-btn{
+  padding: 1rem;
+  width: 100%;
+  background-color: var(--secondary);
+  color:var(--accent);
+ 
+  cursor:pointer;
+}
+.game-title{
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 1rem;
+ 
+}
+.social-links{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  border: 1px solid var(--accent);
+  background-color: var(--secondary);
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.social{
+ margin-top: 2rem;
+  
+}
+.social-links>span>a{
+  text-decoration: none;
+  color: var(--accent);
+}
+
+.specification-container{
+ width: 100%;
+  
+  box-sizing: border-box;
+  display: flex;
+  padding: 1.5rem;
+  background-color: var(--secondary);
+  font-size: small;
+ 
 }
