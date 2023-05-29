@@ -118,9 +118,40 @@ export const products = [
       releaseDate:"04-21-2023",
       price: 3299,
       categoryName: ["Action","Horror"],
-      rating:3.8,
+      rating:4.5,
+      socialLinks:[
+       { twitter:"https://twitter.com/deadislandgame"},
+       { website:"https://deadisland.com/"},
+        {instagram:"https://www.instagram.com/deadislandgame/"},
+        {youtube:"https://www.youtube.com/user/deadislandgame"},
+        {reddit:"https://www.reddit.com/r/deadisland/"}
+
+
+      ],
       thumbnail:"https://cdn1.epicgames.com/offer/236c74b4cd2e4e3099cbe2ebdc9686fd/EGS_DeadIsland2_DeepSilverDambusterStudios_S2_1200x1600-efc5201842cf642eb45f73227cd0789b?h=480&quality=medium&resize=1&w=360",
-      productDetailsImages:["https://cdn2.unrealengine.com/egs-deadisland2-deepsilverdambusterstudios-g1a-00-1920x1080-957ca6fac0ba.jpg","https://cdn2.unrealengine.com/egs-deadisland2-deepsilverdambusterstudios-g1a-01-1920x1080-c99de7f0e62a.jpg","https://cdn2.unrealengine.com/egs-deadisland2-deepsilverdambusterstudios-g1a-04-1920x1080-3bd55876a639.jpg","https://cdn2.unrealengine.com/egs-deadisland2-deepsilverdambusterstudios-g1a-03-1920x1080-2ffa36ebc853.jpg"]
+      productDetailsImages:["https://cdn2.unrealengine.com/egs-deadisland2-deepsilverdambusterstudios-g1a-00-1920x1080-957ca6fac0ba.jpg","https://cdn2.unrealengine.com/egs-deadisland2-deepsilverdambusterstudios-g1a-01-1920x1080-c99de7f0e62a.jpg","https://cdn2.unrealengine.com/egs-deadisland2-deepsilverdambusterstudios-g1a-04-1920x1080-3bd55876a639.jpg","https://cdn2.unrealengine.com/egs-deadisland2-deepsilverdambusterstudios-g1a-03-1920x1080-2ffa36ebc853.jpg"],
+      description:"A deadly virus is spreading across Los Angeles, turning inhabitants into zombies. Bitten, infected, but more than just immune, uncover the truth behind the outbreak and discover who -or what- you are.",
+      longDesc:"Dead Island 2 is stylish, vibrant and flooded with zombie infection. Explore iconic, gore-drenched Los Angeles. Meet larger-than-life characters. Slay countless foes in exquisitely bloody detail. And evolve to become the ultimate Zombie Slayer!",
+      features:"Co-op,Controller Support,Multiplayer,Single Player.",
+      specifications:{
+        minimum:[{os:"Windows 10"},
+          {processor:"AMD FX-9590 / Intel Core i7-7700HQ"},
+          {memory:"10GB"},
+          {storage:"70GB"},
+          {directx:"12"},
+          {graphics:"Radeon R9 390X (8192 VRAM) / GeForce GTX 1060 (6144 VRAM)"}
+      ],
+        recommended:[
+         { os:"Windows 10"},
+         { processor:"Ryzen 5 5600X / Intel Core i9-9900k"},
+          {memory:"10GB"},
+          {storage:"70GB"},
+         { directx:"12"},
+          {graphics:"Radeon RX 6800 XT (16384 VRAM) / GeForce RTX 2070 Super (8192 MB)"}
+      ]
+        
+      },
+      privacyStatement:"©2022 and published by Plaion GmbH. Deep Silver is a division of Plaion. Deep Silver, Dead Island 2™ and their respective logos are trademarks of Plaion GmbH. Developed by Deep Silver Dambuster and additional development by Deep Silver Fishlabs. Dambuster and Fishlabs are registered trademarks of Plaion GmbH. All rights reserved."
     },
   
   {
