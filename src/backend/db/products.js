@@ -111,12 +111,14 @@ export const products = [
   },
   
     {
-      _id: uuid(),
+      _id: "x190",
       title: "Dead Island 2",
       developer: "Deep Silver Dambuster Studios",
       publisher:"Deep Silver",
       releaseDate:"04-21-2023",
       price: 3299,
+      totalPrice:0,
+      count:1,
       categoryName: ["Action","Horror"],
       rating:4.5,
       socialLinks:[
