@@ -4,8 +4,9 @@ import { DataContext } from '../Context/DataContext'
 
 
 const ProductActions = ({selectedProduct}) => {
-const {count,increment,decrement,addToCart,cartItems,removeFromCart} = useContext(DataContext)
+const {addToCart,cartItems,removeFromCart,wishlistItems,addToWishlist} = useContext(DataContext)
 const [cartButtonAction,setCartAction] = useState({label:'',action:() => {}})
+const [wishlistButtonAction,setWishlistButtonAction] = useState({label:'',action:() => {}})
 useEffect(() => {
   const ifItemInCart = cartItems.find(item => item._id === selectedProduct._id)
   if(ifItemInCart){
@@ -15,6 +16,15 @@ useEffect(() => {
     setCartAction({label:'ADD TO CART',action:() => {addToCart({...selectedProduct})}})
   }
 },[selectedProduct,addToCart,cartItems])
+useEffect(() => {
+  const itemInWishlist = wishlistItems.find(item => item._id === selectedProduct._id)
+  if(itemInWishlist){
+    setWishlistButtonAction({label:'IN WISHLIST', action:() => {console.log("remove from wishlist logic here")}})
+  }
+  else{
+    setWishlistButtonAction({label:'ADD TO WISHLIST',action:() => {addToWishlist(selectedProduct)}})
+  }
+},[selectedProduct,addToWishlist,wishlistItems])
   return (
     <div className='product-info'>
     <div>
@@ -31,7 +41,7 @@ useEffect(() => {
       
         <button className='primary'>BUY NOW</button>
         <button onClick={cartButtonAction.action}>{cartButtonAction.label}</button>
-        <button>ADD TO WISHLIST</button>
+        <button onClick = {wishlistButtonAction.action}>{wishlistButtonAction.label}</button>
       </div>
       <div className='game-details'>
         <div><span>Developer</span><span>{selectedProduct.developer}</span></div>
