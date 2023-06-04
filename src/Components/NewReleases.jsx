@@ -12,7 +12,7 @@ const NewReleases = () => {
          }
 
     )
-    console.log(newReleases)
+   
   return (
     <div className='game-tile-container'>
       {newReleases.map(game => {

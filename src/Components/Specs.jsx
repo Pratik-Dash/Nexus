@@ -2,7 +2,7 @@ import React from 'react'
 
 const Specs = ({product}) => {
     const{specifications:{minimum,recommended}} = product
-    console.log(minimum)
+   
   return (
     <div className='specification-container'>
       <div className='min-req'>
