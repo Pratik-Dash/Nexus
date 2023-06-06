@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { DataContext } from '../Context/DataContext'
 import {Link} from "react-router-dom"
 const NewReleases = () => {
+  
     const {products} = useContext(DataContext)
     const newReleases = products.filter((product) => 
         {

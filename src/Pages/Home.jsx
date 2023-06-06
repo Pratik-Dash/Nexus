@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import HeroSlider from '../Components/HeroSlider'
 import NewReleases from '../Components/NewReleases'
 import FreeGame from '../Components/FreeGame'
 import TopPicks from '../Components/TopPicks'
+import { DataContext } from '../Context/DataContext'
+import { Nav } from '../Components/Top-Nav'
 
 const Home = () => {
-
   return (
+    <>
+    <Nav/>
     <div>
   
       <h1>Amazing Deals</h1>
@@ -27,6 +30,7 @@ const Home = () => {
         <FreeGame/>
       </div>
     </div>
+    </>
   )
 }
 

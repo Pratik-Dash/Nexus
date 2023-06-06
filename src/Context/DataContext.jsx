@@ -1,4 +1,5 @@
-import React,{useEffect, useReducer, useState} from "react"
+import React,{useContext, useEffect, useReducer, useState} from "react"
+
 const DataContext = React.createContext()
 
 const DataContextProvider = ({children}) => {
@@ -147,14 +148,55 @@ catch(error){
   console.log(error)
 }
 }
-
+//Auth Logic
+const [user,setUser] = useState(null)
+    // const [token,setToken] = useState("")
+    useEffect(() => {
+        if(user){
+            localStorage.setItem("user",JSON.stringify({...user}))
+        }
+    },[user])
+    useEffect(() => {
+        const storedUser = localStorage.getItem("user")
+        if(storedUser){
+            setUser(JSON.parse(storedUser))
+        }
+    },[])
+    const login = async({email,password}) => {
+      // debugger
+        try{
+            const response = await fetch("/api/auth/login",{
+                method:'POST',
+                body:JSON.stringify({email,password})
+            })
+            if(response.ok){
+                const data = await response.json()
+                console.log(data)
+                const foundUser = data.foundUser
+                const token = data.encodedToken
+                setUser({foundUser,token})
+                 console.log(user)
+            }
+            else{
+                console.log("Unable to login")
+            }
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+    const logout = () => {
+      debugger
+        localStorage.removeItem("user")
+        setUser(null)
+    }
 
 
 
 
     return (
-    
-      <DataContext.Provider value = {{products,categories,cartItems,addToCart,setCartItems,removeItemFromCart,wishlistItems,addToWishlist,setWishlistItems,removeItemFromWishlist}}>
+      
+      <DataContext.Provider value = {{products,categories,cartItems,addToCart,setCartItems,removeItemFromCart,wishlistItems,addToWishlist,setWishlistItems,removeItemFromWishlist,user,login,logout}}>
        {children}
       </DataContext.Provider>
     
@@ -162,3 +204,6 @@ catch(error){
 }
 
 export {DataContext,DataContextProvider}
+export const useData = () => {
+  return useContext(DataContext)
+}

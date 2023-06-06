@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { DataContext } from '../Context/DataContext'
 import ScreenshotSlider from '../Components/ScreenshotSlider'
 import ProductActions from '../Components/ProductActions'
+import { Nav } from '../Components/Top-Nav'
 
 const SingleProduct = () => {
   const {id} = useParams()
@@ -12,6 +13,7 @@ const SingleProduct = () => {
   
   return(
     <>
+    <Nav/>
     <div className='game-title'>
       <h1>
         {selectedProduct.title}

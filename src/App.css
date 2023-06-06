@@ -497,3 +497,76 @@ width: 100px;
 .wishlist-action-buttons > div:last-child {
   margin-right: 0; 
 }
+/*profile*/
+body {
+  background-color: #222;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  
+}
+
+header {
+  background-color: #333;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  color: #fff;
+}
+
+.logout-button {
+  background-color: #A100FF;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.logout-button:hover {
+  background-color: #cc00cc;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 80px;
+  background-color: #222;
+  
+}
+
+.profile-info {
+  max-width: 500px;
+  padding: 5rem;
+  background-color: #333;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.user-name {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.user-firstname,
+.user-lastname,
+.user-address {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: #eee;
+}
+
+.user-address {
+  margin-bottom: 20px;
+}
+/* login page*/
+
+
