@@ -13,6 +13,9 @@ export const users = [
     lastName: "Balika",
     email: "adarshbalika@gmail.com",
     password: "adarshbalika",
+    address:{
+      primary:"654 Cedar Road, Hamletown, Germany"
+    },
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },

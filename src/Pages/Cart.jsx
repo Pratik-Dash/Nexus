@@ -6,6 +6,7 @@ import CounterComponent from '../Components/CounterComponent'
 import Wishlist from './Wishlist'
 import WishlistItem from '../Components/WishlistItem'
 import { NavLink } from 'react-router-dom'
+import { Nav } from '../Components/Top-Nav'
 
 const Cart = () => {
   const{cartItems,setCartItems,addToWishlist,removeItemFromCart,wishlistItems} = useContext(DataContext)
@@ -25,6 +26,8 @@ const Cart = () => {
       removeItemFromCart(item)
   }
   return (
+    <>
+    <Nav/>
     <div>
       <h1>Cart</h1>
       <div className='cart-items'>
@@ -35,7 +38,7 @@ const Cart = () => {
           
               <div><CounterComponent item = {item} updatePrice={updatePrice}/></div>
               <div className='cart-action-buttons'>
-                  <button>Remove</button>
+                  <button onclick = {() => removeItemFromCart(item)}>Remove</button>
                   {!wishlistItems.find(wishlistitem =>wishlistitem._id === item._id ) ? <button onClick = {() => handleWishListButton(item)}>Move to wishlist</button>:<button>
                     <NavLink to="/wishlist" style={{ textDecoration: "none" }}>
                                                 View in Wishlist
@@ -55,6 +58,7 @@ const Cart = () => {
       {/* <CartSummary itemsInCart = {cartItems}/> */}
       </div>
     </div>
+    </>
   )
 }
 

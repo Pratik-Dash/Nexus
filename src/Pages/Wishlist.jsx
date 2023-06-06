@@ -1,10 +1,13 @@
 import React, { useContext } from 'react'
 import WishlistItem from '../Components/WishlistItem'
 import { DataContext } from '../Context/DataContext'
+import { Nav } from '../Components/Top-Nav'
 
 const Wishlist = () => {
   const {wishlistItems,addToCart,cartItems,removeItemFromWishlist} = useContext(DataContext)
   return (
+    <>
+    <Nav/>
     <div>
       <h1>Wishlist</h1>
       <div className='wishlist-container'>
@@ -13,6 +16,7 @@ const Wishlist = () => {
       }
       </div>
     </div>
+    </>
   )
 }
 
