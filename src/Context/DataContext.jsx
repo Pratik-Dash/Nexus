@@ -1,13 +1,13 @@
 import React,{useContext, useEffect, useReducer, useState} from "react"
+import { useNavigate } from "react-router-dom"
 
 const DataContext = React.createContext()
 
 const DataContextProvider = ({children}) => {
     const [products,setProducts] = useState([])
     const [categories,setCategories] = useState([])
-    
-   
-    
+    const navigate = useNavigate()
+  
   useEffect(() => {
 
     const fetchData = async() =>{
@@ -17,6 +17,7 @@ const DataContextProvider = ({children}) => {
         const{categories} = await categoryResponse.json()
         setProducts(products)
         setCategories(categories)
+        
         
     } 
     fetchData()
@@ -41,11 +42,16 @@ const DataContextProvider = ({children}) => {
     }
   }, []);
   const addToCart = async(product) =>{
+   const getCurrentUser = localStorage.getItem("user")
+   if(getCurrentUser){
+    const userObj = JSON.parse(getCurrentUser)
+    var encodedToken = userObj.token
+    console.log(encodedToken)
     try{
       const response = await fetch("/api/user/cart",{
         method:'POST',
         headers:{
-          authorization:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI0NDEzNTVhNC1kZjAzLTQwZTUtYmJlMi1iNjZkOGU2ODVmYmQiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.OzsgW2hUP5H1Kai8U3-46-gLsgQKvNDkzJCle4Kta_U"
+          authorization:encodedToken
         },
         body:JSON.stringify({product})
       })
@@ -62,14 +68,24 @@ const DataContextProvider = ({children}) => {
       console.log(error)
     }
   }
+  else{
+    navigate("/sign-in")
+    return 
+  }
+}
+
   
   const removeItemFromCart = async(product) => {
-    
+    const getUser = localStorage.getItem("user")
+    const userObj = JSON.parse(getUser)
+    const encodedToken = userObj.token
+    if(encodedToken)
+    {
     try{
         const response = await fetch(`/api/user/cart/${product._id}`,{
           method:'DELETE',
           headers:{
-            authorization:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI0NDEzNTVhNC1kZjAzLTQwZTUtYmJlMi1iNjZkOGU2ODVmYmQiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.OzsgW2hUP5H1Kai8U3-46-gLsgQKvNDkzJCle4Kta_U"
+            authorization:encodedToken
           }
         })
         if(response.ok){
@@ -83,6 +99,7 @@ const DataContextProvider = ({children}) => {
     catch(error){
       console.log(error)
     }
+  }
   }
 //wishlist logic
 const[wishlistItems,setWishlistItems] = useState([])
@@ -101,6 +118,10 @@ useEffect(() => {
 }, []);
 
 const addToWishlist = async(product) => {
+  const getUser = localStorage.getItem("user")
+  const userObj = JSON.parse(getUser)
+  const encodedToken = userObj?.token
+  if(encodedToken){
   const productAlreadyExists = wishlistItems.find(item => item._id === product._id)
   if(!productAlreadyExists){
   try{
@@ -125,15 +146,22 @@ const addToWishlist = async(product) => {
     console.log(error)
   }
 }
+  }else{
+    navigate("/sign-in")
+  }
 }
 
+
 const removeItemFromWishlist = async(product) => {
-  debugger
+  const getUser = localStorage.getItem("user")
+  const currentUser = JSON.parse(getUser)
+  const encodedToken = currentUser?.token
+
   try{
   const response = await fetch(`/api/user/wishlist/${product._id}`,{
       method:'DELETE',
       headers:{
-        authorization:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI0NDEzNTVhNC1kZjAzLTQwZTUtYmJlMi1iNjZkOGU2ODVmYmQiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.OzsgW2hUP5H1Kai8U3-46-gLsgQKvNDkzJCle4Kta_U"
+        authorization:encodedToken
       }
   })
   if(response.ok){
@@ -150,7 +178,7 @@ catch(error){
 }
 //Auth Logic
 const [user,setUser] = useState(null)
-    // const [token,setToken] = useState("")
+    
     useEffect(() => {
         if(user){
             localStorage.setItem("user",JSON.stringify({...user}))
@@ -163,7 +191,7 @@ const [user,setUser] = useState(null)
         }
     },[])
     const login = async({email,password}) => {
-      // debugger
+       debugger
         try{
             const response = await fetch("/api/auth/login",{
                 method:'POST',
@@ -171,11 +199,8 @@ const [user,setUser] = useState(null)
             })
             if(response.ok){
                 const data = await response.json()
-                console.log(data)
-                const foundUser = data.foundUser
-                const token = data.encodedToken
-                setUser({foundUser,token})
-                 console.log(user)
+                const { foundUser: user, encodedToken: token } = data;
+                setUser({ ...user, token });
             }
             else{
                 console.log("Unable to login")
@@ -186,17 +211,77 @@ const [user,setUser] = useState(null)
         }
     }
     const logout = () => {
-      debugger
         localStorage.removeItem("user")
         setUser(null)
     }
+
+//signup logic
+
+
+
+useEffect(() => {
+  if(user){
+      localStorage.setItem("user",JSON.stringify({...user}))
+  }
+},[user])
+useEffect(() => {
+  const getNewUser = localStorage.getItem("user")
+  if(getNewUser){
+      setUser(JSON.parse(getNewUser))
+  }
+},[])
+
+const signUpUser = async({firstName,lastName,email,pass}) => {
+  console.log(firstName)
+  console.log(lastName)
+  console.log(email)
+  console.log(pass)
+    try{
+        const response = await fetch("/api/auth/signup",{
+            method:'POST',
+            body:JSON.stringify({email,pass,firstName,lastName})
+            
+        })
+        console.log(response)
+        console.log(response.ok)
+        if(response.ok){
+            
+            const data = await response.json()
+            const { createdUser: user, encodedToken: token } = data;
+            setUser({ ...user, token });
+        }
+        else{
+            console.log("Unable to signup")
+        }
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
     return (
       
-      <DataContext.Provider value = {{products,categories,cartItems,addToCart,setCartItems,removeItemFromCart,wishlistItems,addToWishlist,setWishlistItems,removeItemFromWishlist,user,login,logout}}>
+      <DataContext.Provider value = {{products,categories,cartItems,addToCart,setCartItems,removeItemFromCart,wishlistItems,addToWishlist,setWishlistItems,removeItemFromWishlist,user,login,logout,signUpUser}}>
        {children}
       </DataContext.Provider>
     

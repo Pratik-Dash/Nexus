@@ -1,6 +1,6 @@
 import React, { useState,useContext } from 'react'
 import { DataContext } from '../Context/DataContext';
-import { useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate,Link } from "react-router-dom"
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
@@ -19,12 +19,14 @@ const LoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const userCred = {email,password}
+    
     login(userCred)
     setEmail('')
     setPassword('')
     navigate(redirectPath,{replace:true})
   }
   return (
+    <>
       <div className='form-container'>
        <form onSubmit={handleSubmit}>
       <div>
@@ -39,6 +41,12 @@ const LoginPage = () => {
       <button type="submit">Submit</button>
     </form>
     </div>
+    <div>
+     <Link to = "/signup">
+        <button className="cart-button action-button">Create a new account</button>
+        </Link></div>
+    
+    </>
   );
 };
     
