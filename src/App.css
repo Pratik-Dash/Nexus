@@ -5,8 +5,8 @@
 
 }
 .App {
-  text-align: center;
-  background-color: var(--primary);
+  
+  
   line-height: 2;
 }
 .top-nav{
@@ -895,4 +895,336 @@ input[type="range"] {
 .search-cover {
   height: 50px;
   width: 42px;
+}
+/* cart summary */
+.summary-container{
+  width: 250px;
+  margin-left: 32px;
+  color: var(--secondary);
+  border: 1px solid white;
+  padding: 1rem;
+  box-sizing: border-box;
+  font-size: small;
+  
+}
+.summary-header{
+  width: 100%;
+  border: 1px solid #A100FF;
+  box-sizing: border-box;
+  padding: .5rem;
+  text-align: left;
+}
+.summary-header>span{
+  font-size: x-large;
+  line-height: 1.5;
+  text-align: left;
+}
+.cart-summary{
+  padding: 1rem;
+  border: 1px solid #A100FF;
+  margin-top: 20px;
+}
+.individual-cart-item{
+  display: flex;
+  justify-content: space-between;
+}
+.discount-applicable{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+.discount-info{
+  font-size: x-small;
+  background-color: var(--accent);
+  text-align: left;
+  padding: .2rem;
+  margin-top: 15px;
+}
+.shipping-charge{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+discount-applicable {
+display: flex;
+justify-content: space-between;
+margin-top: 15px;
+}
+.price-after-dicsount{
+  display: flex;
+  justify-content: space-between;
+  font-size: medium;
+  margin-top: 15px;
+}
+.subtotal{
+ 
+  font-weight: 700;
+}
+.checkout-btn{
+  background-color: #A100FF;
+  color: var(--primary);
+  padding: .6rem;
+  margin-top: 35px;
+  font-size: x-small;
+
+}
+/* address management */
+.address-container{
+  color: white;
+}
+
+.add-address-btn{
+  border: 1px solid white;
+  cursor: pointer;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #222;
+  border-radius: 5px;
+  padding: 1rem;
+  width: 40%;
+  color: var(--secondary);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.address-form-container input{
+  box-sizing: border-box;
+}
+.address-input{
+
+  background-color: transparent;
+  border: 2px solid #A100FF;
+  border-radius:5px;
+  max-width:100%;
+  color:white
+}
+.modal-content h4 {
+  margin-top: 0;
+}
+
+.address-form-container {
+  margin-top: 10px;
+}
+
+.address-form-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.address-form-container input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.button-group button {
+  margin-left: 10px;
+  padding: .7rem;
+  background-color: #A100FF;
+  column-rule: white;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  color: white;
+  border: none;
+  font-size: medium;
+  font-weight: 400;
+
+}
+.button-group button:hover{
+
+  background-color: #cc00cc;
+}
+.address-button-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.add-address-btn{
+
+  
+  padding: .4rem;
+  background-color: #A100FF;
+  column-rule: white;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  color: white;
+  border: none;
+  font-size: small;
+  font-weight: 500;
+  width: 100px;
+  margin-top: 1rem;
+  
+}
+.add-address-btn:hover{
+  background-color: #cc00cc;
+  
+}
+.address-container {
+  margin-top: 20px;
+}
+
+.address-table {
+  width: 70%;
+  border-collapse: collapse;
+  border: 1px solid #A100FF;
+  margin: auto;
+}
+
+.address-table th,
+.address-table td {
+  padding: 10px;
+  text-align: left;
+}
+
+.address-table th {
+  background-color: #8c4bea;
+  color: #ffffff;
+}
+
+.address-table td {
+  border-bottom: 1px solid #dc89ff;
+}
+
+.address-table tr:nth-child(even) {
+  background-color: #c86fe6;
+}
+
+.address-table tr:nth-child(even) td {
+  color: #000000;
+}
+
+.address-table tr:hover {
+  background-color: #ebebeb;
+  color: black;
+}
+.delete-address-row{
+  background-color: transparent;
+  color: #b60ec2;
+  padding: .4rem;
+  border: 1px solid #b60ec2;
+  cursor: pointer;
+}
+.finalsummary-container {
+  background-color: #282c34;
+  color: #fff;
+  padding: 20px;
+}
+
+.summary-address-delivery-info {
+  border: 1px solid #a100ff;
+  padding: 20px;
+}
+
+.cust-info-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.user-personal-info span {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.user-address-info {
+  display: flex;
+  margin-top: 20px;
+}
+
+.address-column {
+  flex: 1;
+}
+
+.summary-address-inputs {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  border: 1px solid #a100ff;
+  color: #333;
+  font-size: 14px;
+}
+
+.final-summary-items {
+  margin-top: 20px;
+}
+.summary-header{
+  font-size: large;
+  font-weight: 700;
+}
+.order {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.summary-delivery-info {
+  margin-top: 20px;
+}
+
+.shipping-method {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #a100ff10;
+  cursor: pointer;
+}
+
+.shipping-method:hover {
+  background-color: #a100ff20;
+}
+
+.shipping-method > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.shipping-method > div span {
+  margin-left: 5px;
+}
+
+.shipping-pricing-info {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.mode-of-payment {
+  margin-top: 20px;
+}
+
+.mode-of-payment span {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.place-order {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.place-order button {
+  padding: 10px 20px;
+  background-color: #a100ff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }

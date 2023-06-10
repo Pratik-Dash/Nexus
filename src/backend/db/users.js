@@ -13,9 +13,13 @@ export const users = [
     lastName: "Balika",
     email: "adarshbalika@gmail.com",
     password: "adarshbalika",
-    address:{
-      primary:"654 Cedar Road, Hamletown, Germany"
-    },
+    addresses:{userAddress:{
+      street:"987 Pine Lane",
+      city:"Florence",
+      state:"Alabama",
+      country:"United States"
+      
+    }},
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },

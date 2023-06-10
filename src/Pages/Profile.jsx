@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import { DataContext, useData } from '../Context/DataContext'
 import { Nav } from '../Components/Top-Nav'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 const Profile = () => {
     const {user,logout} = useContext(DataContext)
-    
+    const navigate = useNavigate()
   return (
 
     <div>
@@ -12,7 +12,11 @@ const Profile = () => {
       {<>
         <header>
         <h1>Profile Page</h1>
-        <button className="logout-button" onClick={() => logout()}>Logout</button>
+        <div>
+        <button className="logout-button" onClick={() => logout()}>LOGOUT</button>
+        <button className="logout-button" onClick={() => navigate("/")}>HOME</button>
+        <button className="logout-button" onClick={() => navigate("/manage-addresses")}>SELECT ADDRESS</button>
+        </div>
     </header>
     <main>
     <div className="profile-info">
