@@ -6,6 +6,7 @@ const DataContext = React.createContext()
 const DataContextProvider = ({children}) => {
     const [products,setProducts] = useState([])
     const [categories,setCategories] = useState([])
+    
     const navigate = useNavigate()
   
   useEffect(() => {
@@ -76,6 +77,7 @@ const DataContextProvider = ({children}) => {
 
   
   const removeItemFromCart = async(product) => {
+    
     const getUser = localStorage.getItem("user")
     const userObj = JSON.parse(getUser)
     const encodedToken = userObj.token
@@ -191,7 +193,7 @@ const [user,setUser] = useState(null)
         }
     },[])
     const login = async({email,password}) => {
-       debugger
+       
         try{
             const response = await fetch("/api/auth/login",{
                 method:'POST',
@@ -201,6 +203,7 @@ const [user,setUser] = useState(null)
                 const data = await response.json()
                 const { foundUser: user, encodedToken: token } = data;
                 setUser({ ...user, token });
+                setAddresses({...addresses,primaryAddress: user?.addresses?.userAddress})
             }
             else{
                 console.log("Unable to login")
@@ -212,13 +215,30 @@ const [user,setUser] = useState(null)
     }
     const logout = () => {
         localStorage.removeItem("user")
+        localStorage.removeItem("cartItems")
+        localStorage.removeItem("wishlist")
+        localStorage.removeItem("addresses")
         setUser(null)
+
     }
 
+//Address Management
+const [addresses, setAddresses] = useState({});
+const [selectedAddress,setSelectedAddress] = useState("primaryAddress")
+useEffect(() => {
+  localStorage.setItem("addresses", JSON.stringify(addresses));
+}, [addresses, user?.addresses?.userAddress]);
+
+useEffect(() => {
+  const storedAddresses = localStorage.getItem("addresses");
+  if (!storedAddresses) {
+    setAddresses({ primaryAddress: user?.addresses?.userAddress });
+  } else {
+    setAddresses(JSON.parse(storedAddresses));
+  }
+}, []);
+
 //signup logic
-
-
-
 useEffect(() => {
   if(user){
       localStorage.setItem("user",JSON.stringify({...user}))
@@ -259,6 +279,8 @@ const signUpUser = async({firstName,lastName,email,pass}) => {
     }
 }
 
+//order management
+const [orders,setOrders] = useState({})
 
 
 
@@ -281,7 +303,7 @@ const signUpUser = async({firstName,lastName,email,pass}) => {
 
     return (
       
-      <DataContext.Provider value = {{products,categories,cartItems,addToCart,setCartItems,removeItemFromCart,wishlistItems,addToWishlist,setWishlistItems,removeItemFromWishlist,user,login,logout,signUpUser}}>
+      <DataContext.Provider value = {{products,categories,cartItems,addToCart,setCartItems,removeItemFromCart,wishlistItems,addToWishlist,setWishlistItems,removeItemFromWishlist,user,addresses,setAddresses,login,logout,signUpUser,selectedAddress,setSelectedAddress,orders,setOrders}}>
        {children}
       </DataContext.Provider>
     

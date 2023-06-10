@@ -4,13 +4,13 @@ import { DataContext } from '../Context/DataContext'
 
 
 const ProductActions = ({selectedProduct}) => {
-const {addToCart,cartItems,removeFromCart,wishlistItems,addToWishlist} = useContext(DataContext)
+const {addToCart,cartItems,removeItemFromCart,wishlistItems,addToWishlist} = useContext(DataContext)
 const [cartButtonAction,setCartAction] = useState({label:'',action:() => {}})
 const [wishlistButtonAction,setWishlistButtonAction] = useState({label:'',action:() => {}})
 useEffect(() => {
   const ifItemInCart = cartItems.find(item => item._id === selectedProduct._id)
   if(ifItemInCart){
-    setCartAction({label:'REMOVE FROM CART',action:() => {removeFromCart(selectedProduct)}})
+    setCartAction({label:'REMOVE FROM CART',action:() => {removeItemFromCart(selectedProduct)}})
   }
   else{
     setCartAction({label:'ADD TO CART',action:() => {addToCart({...selectedProduct})}})

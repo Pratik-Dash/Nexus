@@ -1,7 +1,7 @@
 import React, { useContext,useEffect,useReducer, useState } from 'react'
 
 
-const CounterComponent = ({item,updatePrice}) => {
+const CounterComponent = ({item,updatePriceandCount}) => {
     
     const increment = () =>{
         dispatch({type:'INCREMENT'})
@@ -21,13 +21,15 @@ const CounterComponent = ({item,updatePrice}) => {
       }
       const[count, dispatch] = useReducer(reducer,item.count)
       const[currentTotalPrice,setTotalPrice] = useState(item.totalPrice)
+      
       useEffect(() => {
         const updatedProduct = {
             ...item,
-            totalPrice:count * item.price
+            totalPrice:count * item.price,
+            count:count
         }
         setTotalPrice(() => updatedProduct.price)
-        updatePrice(updatedProduct)
+        updatePriceandCount(updatedProduct)
         console.log(updatedProduct.totalPrice)
       },[count,item])
         

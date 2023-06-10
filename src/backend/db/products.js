@@ -118,8 +118,10 @@ export const products = [
       releaseDate:"04-21-2023",
       price: 3299,
       totalPrice:0,
+      priceAfterDiscount:0,
       count:1,
       categoryName: ["Action","Horror"],
+      
       rating:4.5,
       socialLinks:[
        { twitter:"https://twitter.com/deadislandgame"},

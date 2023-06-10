@@ -13,7 +13,7 @@ const SingleProduct = () => {
   
   return(
     <>
-    <Nav/>
+    
     <div className='game-title'>
       <h1>
         {selectedProduct.title}

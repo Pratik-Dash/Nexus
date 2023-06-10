@@ -12,6 +12,9 @@ import Profile from "./Pages/Profile";
 import RequireAuth from "./Components/RequireAuth";
 import Filters from "./Components/Filters";
 import SignUp from "./Pages/sign-up";
+import AddressManagement from "./Pages/AddressManagement";
+import FinalSummary from "./Pages/FinalSummary";
+import Confirmation from "./Pages/Confirmation";
 
 
 function App() {
@@ -32,6 +35,9 @@ function App() {
       <Route path = "*" element = {<NotFound/>}/>
       <Route path = "/profile" element = {<RequireAuth><Profile/></RequireAuth>}/>
       <Route path = "/signup" element = {<SignUp/>}/>
+      <Route path = "/finalsummary" element = {<RequireAuth><FinalSummary/></RequireAuth>}/>
+      <Route path = "/manage-addresses" element = {<RequireAuth><AddressManagement/></RequireAuth>}/>
+      <Route path = "/confirmation" element = {<RequireAuth><Confirmation/></RequireAuth>}/>
       <Route path = "/mockman" element = {<Mockman/>}/>
     </Routes>
     </DataContextProvider>
