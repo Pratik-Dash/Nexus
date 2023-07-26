@@ -1,12 +1,13 @@
 import React, { useContext,useEffect,useState } from 'react'
 import { DataContext } from '../Context/DataContext'
 import { useNavigate } from 'react-router-dom'
-
+import ClipLoader   from "react-spinners/ClipLoader";
+import { toast } from 'react-toastify'
 const FinalSummary = () => {
-    const {addresses,selectedAddress,user} = useContext(DataContext)
-    const{orders} = useContext(DataContext)
+    const {addresses,selectedAddress,user,cartItems,removeItemFromCart,orders,checkoutLoading} = useContext(DataContext)
     const{savedItems,discountPercent,totalPrice,finalPrice} = orders
     const navigate = useNavigate()
+    
     const shippingMethods = [
         {
           id: 1,
@@ -32,10 +33,26 @@ const FinalSummary = () => {
         }
       },[selectedShipping])
       const handleConfirmation = () => {
-          navigate("/confirmation")
+        cartItems.map(cartItem => 
+          removeItemFromCart(cartItem)
+          )
+          setTimeout(() => {
+            navigate("/confirmation")
+          }, 1000) 
+          toast.success('Order Placed Successfully', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            });
           setTimeout(() => {
             navigate('/');
-          }, 3000); 
+          }, 2000); 
+          
       }
   return (
     <div className='finalsummary-container'>
@@ -64,7 +81,7 @@ const FinalSummary = () => {
             savedItems.map(savedItem => 
             <div className='order'>
                 <span>{savedItem.title}</span>
-                <span>{savedItem.count}</span>
+                <span> X {savedItem.count}</span>
                 <span>{savedItem.price}</span>
             </div>
             
@@ -89,7 +106,7 @@ const FinalSummary = () => {
             {
                 shippingMethods.map(shippingMethod => 
                 
-                <div className='shipping-method' key={shippingMethod.id} onClick={() => setShipping(shippingMethod.id) } style = {{backgroundColor:selectedShipping===shippingMethod.id?"#A100FF10":""}}>
+                <div className='shipping-method' key={shippingMethod.id} onClick={() => setShipping(shippingMethod.id) } style = {{backgroundColor:selectedShipping===shippingMethod.id?"#097b7b18":""}}>
                     <div>{shippingMethod.name}{selectedShipping=== shippingMethod.id &&<span>✓</span>}</div>
                     <div className='shipping-pricing-info'>
                         
@@ -101,11 +118,11 @@ const FinalSummary = () => {
             }
         </div>
         <div className='mode-of-payment'>
-            <span>Mode of Payment</span>
+            <span>Mode of Payment:</span>
             <span>Cash on Delivery</span>
         </div>
         <div className='place-order'>
-            <button onClick = {handleConfirmation}>Place Order</button>
+            <button onClick = {handleConfirmation}>{!checkoutLoading?`Place Order`:<ClipLoader color="#fff" size={20}/>}</button>
         </div>
       </div>
     </div>

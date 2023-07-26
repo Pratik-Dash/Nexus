@@ -12,6 +12,7 @@ export const users = [
     firstName: "Adarsh",
     lastName: "Balika",
     email: "adarshbalika@gmail.com",
+    profileImage:'https://th.bing.com/th/id/OIG.S_OEBZrr8dzgPLJNFcjj?pid=ImgGn',
     password: "adarshbalika",
     addresses:{userAddress:{
       street:"987 Pine Lane",

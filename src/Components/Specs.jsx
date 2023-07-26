@@ -6,7 +6,7 @@ const Specs = ({product}) => {
   return (
     <div className='specification-container'>
       <div className='min-req'>
-        <p>Minimum</p>
+        <div className='specs-headers'>Minimum</div>
         {
             minimum.map(spec =>
               <div>
@@ -19,7 +19,7 @@ const Specs = ({product}) => {
         }
       </div>
       <div className='recommended-req'>
-      <p>Recommended</p>
+      <div className='specs-headers'>Recommended</div>
         {
 
             recommended.map(spec =>
