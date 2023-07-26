@@ -9,7 +9,7 @@ const Profile = () => {
     const [saveButtonEnabled,setSaveButtonEnabled] = useState(false)
     const[firstName,setFirstName] = useState(user.firstName)
     const[lastName,setLastName] = useState(user.lastName)
-    const[address,setAddress] = useState(user.address)
+    const[address,setAddress] = useState(user.email)
     const navigate = useNavigate()
     const enableEdit = () => {
       setEditMode(() => true)
@@ -85,7 +85,7 @@ const Profile = () => {
         <input type='text'placeholder='Enter last name' value = {lastName} className='profile-inputs' disabled = {!editMode} onChange={(event) =>handleLastNameChange(event.target.value)}/>
       </label>
       <label>
-        Last Name:
+        Email:
         <input type='text'placeholder='Enter Address' value = {address} className='profile-inputs' disabled = {!editMode} onChange={(event) =>handleAddressChange(event.target.value)}/>
       </label>
     </div>

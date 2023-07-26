@@ -20,6 +20,7 @@ import Footer from "./Components/Footer";
 import ShowGamesBySelectedCategory from "./Pages/ShowGamesBySelectedCategory";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import About from "./Pages/About";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
       <Route path = "/finalsummary" element = {<RequireAuth><FinalSummary/></RequireAuth>}/>
       <Route path = "/manage-addresses" element = {<RequireAuth><AddressManagement/></RequireAuth>}/>
       <Route path = "/confirmation" element = {<RequireAuth><Confirmation/></RequireAuth>}/>
+      <Route path = "/about" element = {<About/>}/>
       <Route path = "/mockman" element = {<Mockman/>}/>
     </Routes>
     <ToastContainer/>

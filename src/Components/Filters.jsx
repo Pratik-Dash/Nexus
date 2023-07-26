@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { DataContext } from '../Context/DataContext';
-import AllProducts from './AllProducts';
-import { Link, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 
 const Filters = () => {
   const navigate = useNavigate()
@@ -130,9 +129,9 @@ const Filters = () => {
           <label>
             <input
               type="checkbox"
-              value="Open-World"
+              value="Open World"
               onChange={handleCategoryChange}
-              checked={categoryFilter.includes('Open-World')}
+              checked={categoryFilter.includes('Open World')}
             />
             Open World
           </label>
@@ -186,7 +185,7 @@ const Filters = () => {
       </div>
 
       <div className="filter-section">
-        <h3>Sort Order</h3>
+        <h3>Sort By Price</h3>
         <div className="sort-order">
           <label>
             <input
@@ -196,7 +195,7 @@ const Filters = () => {
               onChange={handleSortOrderChange}
               checked={sortOrder === 'asc'}
             />
-            Ascending
+            Low to High
           </label>
           <label>
             <input
@@ -206,12 +205,12 @@ const Filters = () => {
               onChange={handleSortOrderChange}
               checked={sortOrder === 'desc'}
             />
-            Descending
+            High to Low
           </label>
         </div>
       </div>
 
-      <button className="reset-button" type="button" onClick={resetFilters}>
+      <button className="filter-reset-button" type="button" onClick={resetFilters}>
         Reset
       </button>
       </div>
@@ -220,7 +219,7 @@ const Filters = () => {
       <div className="game-tile-container">
       {sortedProducts.map(game => {
                 
-                return <div key = {game.id} className='game-card' onClick={() => navigate(`single-product/${game._id}`)} >
+                return <div key = {game.id} className='game-card' onClick={() => navigate(`/single-product/${game._id}`)} >
                 <img src = {game.thumbnail} alt = {game.title} className='game-game-image'/>
                 <div className='game-card-info'>
                 <span className='game-title'>{game.title}</span>
