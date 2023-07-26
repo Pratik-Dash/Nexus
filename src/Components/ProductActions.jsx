@@ -9,6 +9,7 @@ const navigate = useNavigate()
 const {addToCart,cartItems,removeItemFromCart,wishlistItems,addToWishlist,loading,wishlistloading} = useContext(DataContext)
 const [cartButtonAction,setCartAction] = useState({label:'',action:() => {}})
 const [wishlistButtonAction,setWishlistButtonAction] = useState({label:'',action:() => {}})
+const preOrderGame = selectedProduct.categoryName.includes("pre-order")
 useEffect(() => {
   const ifItemInCart = cartItems.find(item => item._id === selectedProduct._id)
   if(ifItemInCart){
@@ -64,7 +65,7 @@ const buyNow = () => {
     </div>
       <div className='action-buttons'>
       
-        <button className='primary' onClick={buyNow}>{!loading?`BUY NOW`:<ClipLoader color="#09b9b9" size={20}/>}</button>
+        <button className='primary' onClick={buyNow}>{preOrderGame?'PRE-ORDER NOW':'BUY NOW'}</button>
         <button onClick={cartButtonAction.action}>{!loading? cartButtonAction.label:<ClipLoader color="#09b9b9" size={20}/>}</button>
         <button onClick = {wishlistButtonAction.action}>{!wishlistloading?wishlistButtonAction.label:<ClipLoader color="#09b9b9" size={20}/>}</button>
       </div>
