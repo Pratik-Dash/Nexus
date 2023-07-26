@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { products } from '../backend/db/products'
 import Specs from './Specs'
-
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 const ScreenshotSlider = ({product}) => {
     const [currentImage,setCurrentImage] = useState(product.productDetailsImages[0])
    const[readMoreStatus,setReadMoreStatus] = useState(false)
@@ -11,32 +12,56 @@ const ScreenshotSlider = ({product}) => {
     const readMoreHandler = () => {
       setReadMoreStatus(!readMoreStatus)
     }
+    const responsive = {
+      desktop: {
+        breakpoint: { max: 3000, min: 1024 },
+        items: 1,
+        slidesToSlide: 1,
+      },
+      tablet: {
+        breakpoint: { max: 1024, min: 464 },
+        items: 1,
+        slidesToSlide: 1,
+      },
+      mobile: {
+        breakpoint: { max: 464, min: 0 },
+        items: 1,
+        slidesToSlide: 1,
+      },
+    };
   return (
-    <>
-    <div className='slider-container'>
-    <div className='slider'>
-    <div style = {{backgroundImage:`url(${currentImage})`}} className='slides'></div>
+    <div className='screenshot-main-container'>
+    <div style={{ width: '100%' }} className='screenshots-carousel-container'>
+      <Carousel
+        responsive={responsive}
+        swipeable
+        draggable
+        showDots={false}
+        infinite
+        autoPlay={false}
+        keyBoardControl
+        transitionDuration={500}
+        containerClass="carousel-container"
+        removeArrowOnDeviceType={['tablet', 'mobile']}
+        dotListClass="custom-dot-list-style"
+        itemClass="carousel-item-padding-40-px"
+      >
+        {product.productDetailsImages.map((image, index) => (
+          <div key={index} className="carousel-image-container">
+            <img src={image} alt={`Image ${index}`} className="carousel-image" />
+          </div>
+        ))}
+      </Carousel>
     </div>
-    </div>
-    <div className='mini-screenshots'>
-      {
-        
-        product.productDetailsImages.map(screenshot => 
-        <div  style={{backgroundImage:`url(${screenshot})`,borderColor:currentImage === screenshot?"purple":""}}
-            onClick = {() => clickHandler(screenshot)}
-        >
-
-           
-        </div>
-        )
-      }
-      
-    </div>
+    
     <div className='product-description'>
-       {product.description}
+    <div className='product-description-container'>
+    {product.description}
+    </div>
+      
        
         {readMoreStatus?
-        <div>
+        <div className='product-description-container open'>
           {product.longDesc}
           <div>
             <button onClick = {readMoreHandler} className='read-btn'>READ LESS</button>
@@ -50,7 +75,7 @@ const ScreenshotSlider = ({product}) => {
         
         
         }
-        <div className='social'>
+        {product.socialLinks?<div className='social'>
           <span>Follow Us</span>
           <div className='social-links'>
             {
@@ -59,14 +84,14 @@ const ScreenshotSlider = ({product}) => {
               )
             }
           </div>
-        </div>
+        </div>:<></>}
         <span>Specifications</span>
         <div>
       <Specs product = {product}/>
      </div>
        </div>
      
-    </>
+    </div>
   )
 }
 

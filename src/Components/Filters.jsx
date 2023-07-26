@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { DataContext } from '../Context/DataContext';
 import AllProducts from './AllProducts';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Filters = () => {
+  const navigate = useNavigate()
   const { products } = useContext(DataContext);
   const [priceRange, setPriceRange] = useState(4000);
   const [categoryFilter, setCategoryFilter] = useState([]);
@@ -77,8 +78,10 @@ const Filters = () => {
 
   return (
     <div className='filter-page'>
+    <div className='home-section-headings'>Explore</div>
+    <div className='explore-main-container'>
     <div className="filter-container">
-      <h2>Filters</h2>
+    <div className='home-section-headings'>Filters</div>
 
       <div className="filter-section">
         <h3>Price Range</h3>
@@ -214,22 +217,29 @@ const Filters = () => {
       </div>
       <div className='games-container'>
       <div className='games'>
-      <div className="game-grid">
-    {sortedProducts.map((game) => (
-      <Link to={`single-product/${game._id}`} style={{textDecoration:"none"}} className="game-item" key={game.id}>
-        <img src={game.thumbnail} alt={game.title} className="game-cover" />
-        <div className="game-details">
-        <p className="game-price">{game.title}</p>
-          <p className="game-price">${game.price}</p>
-          <div className="game-genres">
-            {game.categoryName.map((category) => (
-              <span className="genre" key={category}>{category}</span>
-            ))}
-          </div>
-        </div>
-      </Link>
-    ))}
+      <div className="game-tile-container">
+      {sortedProducts.map(game => {
+                
+                return <div key = {game.id} className='game-card' onClick={() => navigate(`single-product/${game._id}`)} >
+                <img src = {game.thumbnail} alt = {game.title} className='game-game-image'/>
+                <div className='game-card-info'>
+                <span className='game-title'>{game.title}</span>
+                <span className='game-price'>{game.price === 0? `Free`: `₹${game.price}`}</span>
+                <div className='game-genre'>
+                  {
+                    game.categoryName.map(genre => 
+                      <span className='cart-tag'>{genre}</span>
+                    )
+                  }
+                </div>
+                </div>
+                
+                </div>
+                    
+                    
+              })}
   </div>
+      </div>
       </div>
       </div>
       </div>

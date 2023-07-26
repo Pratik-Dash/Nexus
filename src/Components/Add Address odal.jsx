@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { DataContext } from '../Context/DataContext';
-
+import { toast } from 'react-toastify'
 const Add_Address_Modal = () => {
   const { addresses, setAddresses } = useContext(DataContext);
   const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +30,16 @@ const Add_Address_Modal = () => {
       },
     });
 
-    // Reset form fields
+    toast.success('Successfully added new address!', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      });
     setStreet('');
     setCity('');
     setState('');

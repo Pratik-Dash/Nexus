@@ -1,8 +1,7 @@
 import React, { useContext } from 'react'
 import { DataContext } from '../Context/DataContext'
 import Add_Address_Modal from '../Components/Add Address odal'
-import { Nav } from '../Components/Top-Nav'
-
+import { toast } from 'react-toastify';
 const AddressManagement = () => {
     
     const{addresses,selectedAddress,setSelectedAddress,setAddresses} = useContext(DataContext)
@@ -10,15 +9,26 @@ const AddressManagement = () => {
         const keys = Object.keys(addresses);
     
         if (keys.length === 0) {
-          return <p>No address exists</p>;
+          return <div className='home-section-headings'>No address exists</div>;
         }
     const handleAddressSelection = (key) => {
         setSelectedAddress(key)
+        
     }
     const deleteAddress =(key) => {
         const listOfAddresses = {...addresses}
         delete listOfAddresses[key]
         setAddresses({...listOfAddresses})
+        toast('Address deleted successfully', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          });
     }
         return(
          
@@ -61,7 +71,6 @@ const AddressManagement = () => {
     }
   return (
     <>
-    <Nav/>
     <div className='address-container'>
       {  getAddresses()}
       <Add_Address_Modal/>

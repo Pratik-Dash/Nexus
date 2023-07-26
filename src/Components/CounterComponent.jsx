@@ -12,14 +12,14 @@ const CounterComponent = ({item,updatePriceandCount}) => {
       const reducer = (count,action) => {
         switch(action.type){
           case 'INCREMENT':
-            return count < 5? count + 1:5
+            return  count < 5 ? count + 1 : count;
           case 'DECREMENT':
-            return count > 1?count -1:1
+            return count > 1 ? count - 1 : count;
           default:
-            return count
+            return count !== undefined ? count : 1
         }
       }
-      const[count, dispatch] = useReducer(reducer,item.count)
+      const [count, dispatch] = useReducer(reducer, item.count !== undefined ? item.count : 1);
       const[currentTotalPrice,setTotalPrice] = useState(item.totalPrice)
       
       useEffect(() => {

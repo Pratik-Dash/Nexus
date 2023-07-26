@@ -6,52 +6,10 @@ import { v4 as uuid } from "uuid";
  * */
 
 export const categories = [
-  {
-    _id: uuid(),
-    categoryName: "action",
-    description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
-  },
-  {
-    _id: uuid(),
-    categoryName: "adventure",
-    description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
-  },
-  {
-    _id: uuid(),
-    categoryName: "open world",
-    description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
-  },
-  {
-    _id: uuid(),
-    categoryName: "fantasy",
-    description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
-  },
-  {
-    _id: uuid(),
-    categoryName: "fighting",
-    description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
-  },
-  {
-    _id: uuid(),
-    categoryName: "exploration",
-    description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
-  },
-  {
-    _id: uuid(),
-    categoryName: "racing",
-    description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
-  },
-  {
-    _id: uuid(),
-    categoryName: "horror",
-    description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
-  }
+  { id: 1, name: 'Action', images:["https://cdn1.epicgames.com/spt-assets/7dd83e44b6984bd0b92c5b6a1850a9cb/eigengrau-1hebc.jpg?h=480&quality=medium&resize=1&w=360","https://cdn1.epicgames.com/spt-assets/6ab91b6489a542fba4b984ab30a4515d/bucket-knight-16yhq.png?h=480&quality=medium&resize=1&w=360","https://cdn1.epicgames.com/spt-assets/2546ec02806a4c9e96aeea7a7484fd3f/liberte-f3blk.jpg?h=480&quality=medium&resize=1&w=360"] },
+  { id: 2, name: 'Adventure', images: ["https://cdn1.epicgames.com/spt-assets/46e0b74270c740c09c5ab30f8f642ab6/everlasting-guilt-5s5yi.jpg?h=480&quality=medium&resize=1&w=360","https://cdn1.epicgames.com/spt-assets/48f4cfc7202e492b8cf16724cbd9f592/apotheorasis--lab-of-the-blind-gods-qmppl.jpg?h=480&quality=medium&resize=1&w=360","https://cdn1.epicgames.com/spt-assets/7fa1aec3fbe8424db7942de750860a86/haak-1ep9y.png?h=480&quality=medium&resize=1&w=360"] },
+  { id: 3, name: 'Racing', images: ["https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_RiMSRacingUltimateEdition_RacewardStudio_Bundles_S2_1200x1600-d15a65497b451be1c92924c3d2755c6f?h=480&quality=medium&resize=1&w=360","https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_HorizonChaseTurbo_AQUIRIS_S2_1200x1600-7b51e6b8f8cf6ebd50f5fb77be96ad9d?h=480&quality=medium&resize=1&w=360","https://cdn1.epicgames.com/offer/9533b9db84274b15886caa464445a975/EGST_StorePortrait_1200x1600_1200x1600-4e8995358cccb9b278b7556651242032?h=480&quality=medium&resize=1&w=360"] },
+  { id: 4, name: 'Open World', images: ["https://cdn1.epicgames.com/offer/77f2b98e2cef40c8a7437518bf420e47/EGS_Cyberpunk2077_CDPROJEKTRED_S2_03_1200x1600-b1847981214ac013383111fc457eb9c5?h=480&quality=medium&resize=1&w=360","https://cdn1.epicgames.com/offer/bdbfb29cbd004978acad9ca4eaf9ec82/EGS_WayoftheHunterAuroraShores_NineRocksGames_DLC_S2_1200x1600-ad64e0f704a23cafbf8c6d9a431e0b42?h=480&quality=medium&resize=1&w=360","https://cdn1.epicgames.com/offer/fe752703dd2042008ff874fc8642fba3/EGS_GrandTheftAutoTheTrilogyTheDefinitiveEdition_RockstarGames_S2_1200x1600-7a39d7c91aed7cf7c5fafdca4dbb9d1c?h=480&quality=medium&resize=1&w=360"] },
+  { id: 5, name: 'Shooters', images:["https://cdn1.epicgames.com/offer/8962863aee2f4e7483fc37d4719c3f69/EGS_PAYDAY3_Starbreeze_S2_1200x1600-80e39c5ee902cba196b484464276c8b7?h=480&quality=medium&resize=1&w=360","https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_CrysisRemasteredTrilogy_Crytek_S2_1200x1600-c58109d2ea25771ab13d58d6183fc4d0?h=480&quality=medium&resize=1&w=360","https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_WolfensteinTheNewOrder_MachineGames_S2_1200x1600-0f70ad56e210812c26a9dde1a8143a58?h=480&quality=medium&resize=1&w=360"]  },
+  { id: 6, name: 'Simulation', images: ["https://cdn1.epicgames.com/offer/3d7d73d0611849969f568da28ae10530/EGS_TTIsleofManRideontheEdge3_RaceWardStudio_S2_1200x1600-4ac32d6b94d5daf827b318d511acfe65?h=480&quality=medium&resize=1&w=360","https://cdn1.epicgames.com/offer/ca0530b485754032be50cb6f27be0c2c/EGS_KerbalSpaceProgramCompleteEdition_Squad_Editions_S2_1200x1600-ecad97169e704a9f6140da93ad5cf4e8?h=480&quality=medium&resize=1&w=360","https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_TransportFever2_UrbanGames_S4_1200x1600-bef6585cd1b06984a51d8b6801580c08?h=480&quality=medium&resize=1&w=360"]},
 ];

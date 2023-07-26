@@ -1,12 +1,15 @@
 import React,{useContext, useEffect, useReducer, useState} from "react"
 import { useNavigate } from "react-router-dom"
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const DataContext = React.createContext()
 
 const DataContextProvider = ({children}) => {
     const [products,setProducts] = useState([])
     const [categories,setCategories] = useState([])
-    
+    const [loading,setLoading] = useState(false)
+    const [wishlistloading,setwishlistLoading] = useState(false)
+    const [checkoutLoading,setCheckoutLoading] = useState(false)
     const navigate = useNavigate()
   
   useEffect(() => {
@@ -43,11 +46,11 @@ const DataContextProvider = ({children}) => {
     }
   }, []);
   const addToCart = async(product) =>{
+    setLoading(true)
    const getCurrentUser = localStorage.getItem("user")
    if(getCurrentUser){
     const userObj = JSON.parse(getCurrentUser)
     var encodedToken = userObj.token
-    console.log(encodedToken)
     try{
       const response = await fetch("/api/user/cart",{
         method:'POST',
@@ -59,10 +62,30 @@ const DataContextProvider = ({children}) => {
       if(response.ok){
         const data = await response.json()
         setCartItems((prevCartItems) => data.cart)
-        
+        setLoading(false)
+        toast.success('Item added to Cart', {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          });
       }
       else{
-        console.log("Cannot add product to cart")
+        
+        toast.error('Cannot add product to cart', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          });
       }
     }
     catch(error){
@@ -77,7 +100,8 @@ const DataContextProvider = ({children}) => {
 
   
   const removeItemFromCart = async(product) => {
-    
+    setLoading(true)
+    setCheckoutLoading(true)
     const getUser = localStorage.getItem("user")
     const userObj = JSON.parse(getUser)
     const encodedToken = userObj.token
@@ -93,6 +117,10 @@ const DataContextProvider = ({children}) => {
         if(response.ok){
           const data = await response.json()
           setCartItems((prevState) =>data.cart)
+          setLoading(false)
+          setCheckoutLoading(false)
+          
+         
         }
         else{
           console.log("Cannot remove product from cart")
@@ -120,6 +148,7 @@ useEffect(() => {
 }, []);
 
 const addToWishlist = async(product) => {
+  setwishlistLoading(true)
   const getUser = localStorage.getItem("user")
   const userObj = JSON.parse(getUser)
   const encodedToken = userObj?.token
@@ -138,9 +167,30 @@ const addToWishlist = async(product) => {
       if(response.ok){
           const data = await response.json()
           setWishlistItems(data.wishlist)
+          setwishlistLoading(false)
+          toast.success('Item added to Wishlist', {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            });
       }
       else{
-        console.log("cannot add product to wishlist")
+       
+        toast.error('cannot add product to wishlist', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          });
       }
     
   }
@@ -155,6 +205,7 @@ const addToWishlist = async(product) => {
 
 
 const removeItemFromWishlist = async(product) => {
+  setwishlistLoading(true)
   const getUser = localStorage.getItem("user")
   const currentUser = JSON.parse(getUser)
   const encodedToken = currentUser?.token
@@ -169,9 +220,30 @@ const removeItemFromWishlist = async(product) => {
   if(response.ok){
     const data = await response.json()
     setWishlistItems((prevState) =>data.wishlist)
+    setwishlistLoading(false)
+    toast.success('Item removed from wishlist', {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      });
   }
   else{
-    console.log("cannot remove item from wishlist")
+   
+    toast.error('cannot remove item from wishlist', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      });
   }
 }
 catch(error){
@@ -182,9 +254,12 @@ catch(error){
 const [user,setUser] = useState(null)
     
     useEffect(() => {
-        if(user){
-            localStorage.setItem("user",JSON.stringify({...user}))
-        }
+       
+      localStorage.setItem("user",JSON.stringify({...user}))
+      if(!user){
+        localStorage.removeItem("user")
+      }
+        
     },[user])
     useEffect(() => {
         const storedUser = localStorage.getItem("user")
@@ -192,32 +267,76 @@ const [user,setUser] = useState(null)
             setUser(JSON.parse(storedUser))
         }
     },[])
-    const login = async({email,password}) => {
-       
-        try{
-            const response = await fetch("/api/auth/login",{
-                method:'POST',
-                body:JSON.stringify({email,password})
-            })
-            if(response.ok){
-                const data = await response.json()
-                const { foundUser: user, encodedToken: token } = data;
-                setUser({ ...user, token });
-                setAddresses({...addresses,primaryAddress: user?.addresses?.userAddress})
-            }
-            else{
-                console.log("Unable to login")
-            }
+    const [loginStatus,setLoginStatus] = useState()
+    const login = async ({ email, password }) => {
+      try {
+        const response = await fetch("/api/auth/login", {
+          method: "POST",
+          body: JSON.stringify({ email, password }),
+        });
+    
+        if (response.ok) {
+          const data = await response.json();
+          const { foundUser: user, encodedToken: token } = data;
+          setUser({ ...user, token });
+          setAddresses({ ...addresses, primaryAddress: user?.addresses?.userAddress });
+          setLoginStatus(true);
+          toast.success("Welcome Back!", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+           
+          });
+         navigate("/")
+        } else {
+          if (response.status === 401) {
+            toast.error("Invalid Credentials, Please try again.", {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
+          } else {
+            toast.error("Unable to login. Please try again later.", {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
+          }
+          setLoginStatus(false);
         }
-        catch(error){
-            console.log(error)
-        }
-    }
+      } catch (error) {
+        console.log(error);
+        toast.error("An unexpected error occurred. Please try again later.", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+        setLoginStatus(false);
+      }
+    };
+    
     const logout = () => {
-        localStorage.removeItem("user")
-        localStorage.removeItem("cartItems")
-        localStorage.removeItem("wishlist")
-        localStorage.removeItem("addresses")
+        localStorage.clear()
         setUser(null)
 
     }
@@ -251,7 +370,7 @@ useEffect(() => {
   }
 },[])
 
-const signUpUser = async({firstName,lastName,email,pass}) => {
+const signUpUser = async({firstName,lastName,email,pass,profileImage}) => {
   console.log(firstName)
   console.log(lastName)
   console.log(email)
@@ -259,7 +378,7 @@ const signUpUser = async({firstName,lastName,email,pass}) => {
     try{
         const response = await fetch("/api/auth/signup",{
             method:'POST',
-            body:JSON.stringify({email,pass,firstName,lastName})
+            body:JSON.stringify({email,pass,firstName,lastName,profileImage})
             
         })
         console.log(response)
@@ -269,9 +388,29 @@ const signUpUser = async({firstName,lastName,email,pass}) => {
             const data = await response.json()
             const { createdUser: user, encodedToken: token } = data;
             setUser({ ...user, token });
+            toast.success('Welcome to Nexus', {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+              });
         }
         else{
-            console.log("Unable to signup")
+           
+            toast.error('Unable to signup', {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+              });
         }
     }
     catch(error){
@@ -283,27 +422,9 @@ const signUpUser = async({firstName,lastName,email,pass}) => {
 const [orders,setOrders] = useState({})
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     return (
       
-      <DataContext.Provider value = {{products,categories,cartItems,addToCart,setCartItems,removeItemFromCart,wishlistItems,addToWishlist,setWishlistItems,removeItemFromWishlist,user,addresses,setAddresses,login,logout,signUpUser,selectedAddress,setSelectedAddress,orders,setOrders}}>
+      <DataContext.Provider value = {{products,categories,cartItems,addToCart,setCartItems,removeItemFromCart,wishlistItems,addToWishlist,setWishlistItems,removeItemFromWishlist,user,setUser,addresses,setAddresses,login,logout,signUpUser,selectedAddress,setSelectedAddress,orders,setOrders,loginStatus,loading,wishlistloading,checkoutLoading}}>
        {children}
       </DataContext.Provider>
     

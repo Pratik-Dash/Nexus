@@ -15,18 +15,23 @@ import SignUp from "./Pages/sign-up";
 import AddressManagement from "./Pages/AddressManagement";
 import FinalSummary from "./Pages/FinalSummary";
 import Confirmation from "./Pages/Confirmation";
-
+import { Nav } from "./Components/Top-Nav";
+import Footer from "./Components/Footer";
+import ShowGamesBySelectedCategory from "./Pages/ShowGamesBySelectedCategory";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     
     <Router>
     <div className="App">
-    
+   
     <DataContextProvider>
+    <Nav/>
     <Routes>
       <Route path = "/" element = {<Home/>}/>
-      {/* <Route path = "/search" element = {<Search/>}/> */}
+      <Route path = "/selected-category/:categoryName" element = {<ShowGamesBySelectedCategory/>}/>
       <Route path = "/explore" element = {<Filters/>}/>
       <Route path = "/single-product/:id" element = {<SingleProduct/>}/>
       <Route path = "/cart" element = {<RequireAuth><Cart/></RequireAuth>}/>
@@ -40,6 +45,8 @@ function App() {
       <Route path = "/confirmation" element = {<RequireAuth><Confirmation/></RequireAuth>}/>
       <Route path = "/mockman" element = {<Mockman/>}/>
     </Routes>
+    <ToastContainer/>
+    <Footer/>
     </DataContextProvider>
     
     </div>

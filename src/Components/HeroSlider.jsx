@@ -1,34 +1,133 @@
-import React, { useState } from 'react'
-
+import React, { useState, useContext } from 'react'
+import { DataContext } from '../Context/DataContext'
+import MoonLoader from "react-spinners/MoonLoader";
+import Carousel from "react-multi-carousel";
 const HeroSlider = () => {
-    const [currentIndex,setImageIndex] = useState(0)
-    const images = [
-      {
-        pic:"https://cdn2.unrealengine.com/egs-jedi-survivor-carousel-desktop-1280x702-e064efcb1338.jpg?h=720&quality=medium&resize=1&w=1280"
-      },
-      {
-        pic:"https://images.unsplash.com/photo-1526509706191-c268f28e9ecb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
-        altText:"Sony Console"
-      },
-      {
-      pic:"https://images.unsplash.com/photo-1678652197831-2d180705cd2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-      altText : "iphone"
-      }
-
-    ]
-    const moveToNextImage = () => {
-      setImageIndex((currentIndex) => (currentIndex === images.length-1? 0:++currentIndex))
-    }
-    const moveToPreviousImage = () => {
-      setImageIndex((currentIndex) =>(currentIndex === 0?images.length-1:--currentIndex))
-    }
+  const {products} = useContext(DataContext)
+  if(!products){
+    return <div>Loading...</div>
+  }
+  const heroItem = products.find(item => item.title.toLowerCase() === "fifa 23")
+  if(!heroItem){
+    return(
+      <div className='hero-loader-container'>
+    <MoonLoader color="#000000" size={50}/>
+  </div>
+    )
+  }
+ 
   return(
+   <Carousel 
+    responsive={{
+    desktop: {
+      breakpoint: {
+        max: 3000,
+        min: 1024
+      },
+      items: 1
+    },
+    mobile: {
+      breakpoint: {
+        max: 464,
+        min: 0
+      },
+      items: 1
+    },
+    tablet: {
+      breakpoint: {
+        max: 1024,
+        min: 464
+      },
+      items: 1
+    }
+  }}
+  showDots
+  
+  swipeable
+  autoPlay
+  autoPlaySpeed={3000}
+  infinite
+>
+    <div className='hero-image-container'>
     
-    <div className='slider'>
-    <button className = "left-arrow" onClick = {moveToNextImage}>⇦</button>
-    <button className="right-arrow" onClick = {moveToPreviousImage}>⇨</button>
-        <div className = "slides" style={{backgroundImage : `url(${images[currentIndex].pic})`}}></div>
+    <div className = "hero-image" style={{backgroundImage : `url("https://cdn2.unrealengine.com/egs-fifa-23-womens-world-cup-carousel-desktop-1920x1080-400538513d51.jpg?h=720&quality=medium&resize=1&w=1280")`}}>
+      <div className='hero-item'>
+          
+
+          <div className='hero-item-details-container'>
+              <span className='now-available-text'>NOW AVAILABLE</span>
+              <span className='hero-action-text'>Play the FIFA Women’s World Cup™ in FIFA 23 at no additional cost.</span>
+              <span className='hero-item-price'>Staring at ₹{heroItem.price}</span>
+              <div className='hero-action-buttons'>
+                <button className='primary-hero-button'>
+                 GET NOW
+                </button>
+                <button className='secondary-hero-button'>
+                  ADD TO WISHLIST
+                </button>
+              </div>
+
+          </div>
+      </div>
     </div>
+
+    </div>
+
+    <div className='hero-image-container'>
+    
+    <div className = "hero-image" style={{backgroundImage : `url("https://cdn2.unrealengine.com/egs-alan-wake-2-carousel-desktop-1248x702-355ef4f0ddf5.jpg?h=720&quality=medium&resize=1&w=1280")`}}>
+      <div className='hero-item'>
+          
+
+          <div className='hero-item-details-container' style={{color:"white"}}>
+          <img src='https://cdn2.unrealengine.com/egs-alan-wake-2-carousel-logo-350x100-25d89157f21e.png' alt='hero-title'/>
+              <span className='now-available-text'>COMING SOON</span>
+              <span className='hero-action-text'>A string of ritualistic murders threatens Bright Falls in the newest psychological survival horror from Remedy.</span>
+              <span className='hero-item-price'>Staring at ₹2748.00</span>
+              <div className='hero-action-buttons'>
+                <button className='primary-hero-button' style={{
+                  backgroundColor:"white",color:"black"
+                }}>
+                 Pre-Order Now
+                </button>
+                <button className='secondary-hero-button' style={{color:"white", borderColor:"white"}} >
+                  ADD TO WISHLIST
+                </button>
+              </div>
+
+          </div>
+      </div>
+    </div>
+
+    </div>
+    <div className='hero-image-container'>
+    
+    <div className = "hero-image" style={{backgroundImage : `url("https://cdn2.unrealengine.com/egs-the-expanse-carousel-desktop-1920x1080-79d992de553e.jpg?h=720&quality=medium&resize=1&w=1280")`}}>
+      <div className='hero-item'>
+          
+
+          <div className='hero-item-details-container' style={{color:"white"}}>
+              <img src='https://cdn2.unrealengine.com/egs-the-expanse-carousel-logo-350x67-ff300c37a78d.png' alt='hero-title'/>
+              <span className='now-available-text'>Coming July 27</span>
+              <span className='hero-action-text'>From scavenging wrecked ships to combating pirates, experience the universe of The Expanse like never before.</span>
+              <span className='hero-item-price'>Staring at ₹1429.00</span>
+              <div className='hero-action-buttons'>
+                <button className='primary-hero-button' style={{
+                  backgroundColor:"white",color:"black"
+                }}>
+                 Pre-Order Now
+                </button>
+                <button className='secondary-hero-button' style={{color:"white", borderColor:"white"}}>
+                  + ADD TO WISHLIST
+                </button>
+              </div>
+
+          </div>
+      </div>
+    </div>
+
+    </div>
+    </Carousel>
   )
 }
 

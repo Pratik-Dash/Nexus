@@ -3,9 +3,9 @@ import Discount from './discount'
 import { useNavigate } from 'react-router-dom'
 import { DataContext } from '../Context/DataContext'
 
-
+import ClipLoader   from "react-spinners/ClipLoader";
 const Summary = ({cartItems}) => {
-    const {setOrders} = useContext(DataContext)
+    const {setOrders,checkoutLoading,removeItemFromCart} = useContext(DataContext)
     const navigate = useNavigate()
     const [discountPercent,setDiscountPercent] = useState(5)
     const [discountText,setDiscountText] = useState("")

@@ -5,7 +5,7 @@ const Confirmation = () => {
   return (
     <div className='confirmation'>
       <h1>Order Confirmed</h1>
-      <UseAnimations animation={radioButton} size={200} style={{color:"white"}} />
+      <span class="material-symbols-outlined">check_circle</span>
     </div>
   )
 }
