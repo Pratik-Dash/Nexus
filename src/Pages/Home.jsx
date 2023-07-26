@@ -1,10 +1,7 @@
 import React, { useContext } from 'react'
 import HeroSlider from '../Components/HeroSlider'
 import NewReleases from '../Components/NewReleases'
-import FreeGame from '../Components/FreeGame'
 import TopPicks from '../Components/TopPicks'
-import { DataContext } from '../Context/DataContext'
-import { Nav } from '../Components/Top-Nav'
 import UpcomingGames from '../Components/UpcomingGames'
 import CategoryList from '../Components/CategoryList'
 const responsive = {
@@ -37,13 +34,6 @@ const Home = () => {
       <div className='home-section-headings'>New Releases</div>
       <div>
         <NewReleases responsive = {responsive}/>
-      </div>
-      <div className='home-section-headings'>Pre-Order Now</div>
-      <div>
-        <UpcomingGames/>
-        <div className='new-game-banner'>
-            <img src= "https://media.gamestop.com/i/gamestop/NBA2K24BME_PO_WK24_1736x224_Full_Blade_D.jpeg"/>
-        </div>
       </div>
       <div className='home-section-headings'>Top Picks</div>
       <div>

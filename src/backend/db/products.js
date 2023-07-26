@@ -510,44 +510,4 @@ export const products = [
 
   },
 
-  {
-    _id: "x195",
-    title: "Assassin's Creed Mirage",
-    developer: "Ubisoft",
-    publisher:"Ubisoft",
-    releaseDate:"10-12-23",
-    price: 4915.76,
-    categoryName: ["Action","Adventure","pre-order"],
-    rating:null,
-    thumbnail:"https://media.gamestop.com/i/gamestop/ACM_ESRB_856x480_2Up_Feature_DM.jpeg",
-    socialLinks:[
-      { website:"https://www.ea.com/games/fifa"},
-       
-     ],
-
-     productDetailsImages:["https://cdn2.unrealengine.com/breaker-image-1920x1080-1920x1080-9b4788ed14ab.png","https://cdn2.unrealengine.com/bagdad-vista-final-3840x2160-053259da6873.jpg","https://cdn2.unrealengine.com/rift-screenshot-alamut-vista-final-3840x2160-9a51a4f592b6.jpg","https://cdn2.unrealengine.com/air-assassination-ac1-gold1920x1080-1920x1080-cb3af9126f5c.jpg"],
-     description:"Experience the story of Basim, a cunning street thief with nightmarish visions, seeking answers and justice as he navigates the bustling streets of ninth-century Baghdad. Through a mysterious, ancient organization known as the Hidden Ones, he will become a deadly Master Assassin and change his fate in ways he never could have imagined.",
-     longDesc:"Experience the story of Basim, a cunning street thief seeking answers and justice as he navigates the bustling streets of ninth-century Baghdad. Through a mysterious, ancient organization known as the Hidden Ones, he will become a deadly Master Assassin and change his fate in ways he never could have imagined.",
-
-    
-  },
-  {
-    _id: "x196",
-    title: "Avatar: Frontiers of Pandora",
-    developer: "Ubisoft",
-    publisher:"Ubisoft",
-    releaseDate:"12-7-23",
-    price: 4915.76,
-    categoryName: ["Action","Adventure","pre-order"],
-    rating:null,
-    thumbnail:"https://media.gamestop.com/i/gamestop/AvatarESRB_856x480_2Up_Feature_DM.webp",
-    productDetailsImages:["https://media.gamestop.com/i/gamestop/20005408_SCR01?$screen2x$","https://media.gamestop.com/i/gamestop/20005408_SCR02?$screen2x$","https://media.gamestop.com/i/gamestop/20005408_SCR03?$screen2x$","https://media.gamestop.com/i/gamestop/20005408_SCR05?$screen2x$"],
-     description:"Avatar: Frontiers of Pandora™ is a first-person, action-adventure game set in the Western Frontier. Abducted by the human militaristic corporation known as the RDA, you, a Na’vi, were molded to serve their purpose. Fifteen years later, you are free, but find yourself a stranger in your birthplace. Reconnect with your lost heritage and discover what it truly means to be Na'vi as you join other clans to protect Pandora from the RDA.",
-     longDesc:"Explore A World of Wonder and Danger - Experience the epic wonders of the Western Frontier, a never-before-seen continent of Pandora. Journey through beautiful yet unpredictable open world regions, where lowering your guard can lead to deadly mistakes.",
-  }
-  
-  
-
-
-
 ];

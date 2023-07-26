@@ -87,7 +87,7 @@ const ScreenshotSlider = ({product}) => {
         </div>:<></>}
         <span>Specifications</span>
         <div>
-      <Specs product = {product}/>
+      {product.specifications &&<Specs product = {product}/>}
      </div>
        </div>
      

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { DataContext, useData } from '../Context/DataContext'
+import { DataContext} from '../Context/DataContext'
 import { Link } from 'react-router-dom'
 
 const AllProducts = () => {
