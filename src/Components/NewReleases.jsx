@@ -30,7 +30,7 @@ const NewReleases = ({responsive}) => {
           <img src = {game.thumbnail} alt = {game.title} className='game-image'/>
           <div className='game-card-info'>
             <span className='game-title'>{game.title}</span>
-            <span className='game-price'>{game.price}</span>
+            <span className='game-price'>₹{game.price}</span>
           </div>
         </div>)
 }

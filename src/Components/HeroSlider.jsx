@@ -58,14 +58,7 @@ const HeroSlider = () => {
               <span className='now-available-text'>NOW AVAILABLE</span>
               <span className='hero-action-text'>Play the FIFA Women’s World Cup™ in FIFA 23 at no additional cost.</span>
               <span className='hero-item-price'>Staring at ₹{heroItem.price}</span>
-              <div className='hero-action-buttons'>
-                <button className='primary-hero-button'>
-                 GET NOW
-                </button>
-                <button className='secondary-hero-button'>
-                  ADD TO WISHLIST
-                </button>
-              </div>
+        
 
           </div>
       </div>
@@ -84,17 +77,7 @@ const HeroSlider = () => {
               <span className='now-available-text'>COMING SOON</span>
               <span className='hero-action-text'>A string of ritualistic murders threatens Bright Falls in the newest psychological survival horror from Remedy.</span>
               <span className='hero-item-price'>Staring at ₹2748.00</span>
-              <div className='hero-action-buttons'>
-                <button className='primary-hero-button' style={{
-                  backgroundColor:"white",color:"black"
-                }}>
-                 Pre-Order Now
-                </button>
-                <button className='secondary-hero-button' style={{color:"white", borderColor:"white"}} >
-                  ADD TO WISHLIST
-                </button>
-              </div>
-
+             
           </div>
       </div>
     </div>
@@ -111,16 +94,7 @@ const HeroSlider = () => {
               <span className='now-available-text'>Coming July 27</span>
               <span className='hero-action-text'>From scavenging wrecked ships to combating pirates, experience the universe of The Expanse like never before.</span>
               <span className='hero-item-price'>Staring at ₹1429.00</span>
-              <div className='hero-action-buttons'>
-                <button className='primary-hero-button' style={{
-                  backgroundColor:"white",color:"black"
-                }}>
-                 Pre-Order Now
-                </button>
-                <button className='secondary-hero-button' style={{color:"white", borderColor:"white"}}>
-                  + ADD TO WISHLIST
-                </button>
-              </div>
+              
 
           </div>
       </div>

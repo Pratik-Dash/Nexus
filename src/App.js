@@ -18,7 +18,7 @@ import Confirmation from "./Pages/Confirmation";
 import { Nav } from "./Components/Top-Nav";
 import Footer from "./Components/Footer";
 import ShowGamesBySelectedCategory from "./Pages/ShowGamesBySelectedCategory";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {

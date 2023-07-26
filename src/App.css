@@ -1433,3 +1433,11 @@ label{
   font-weight: 600;
   font-size: large;
 }
+
+.confirmation{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
+
+}
