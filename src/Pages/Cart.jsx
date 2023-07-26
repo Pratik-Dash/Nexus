@@ -53,7 +53,7 @@ const Cart = () => {
         </div>
       </div>
       <div className='cart-item-price-container'>
-        <span className='cart-item-price'>{item.price}</span>
+        <span className='cart-item-price'>₹{item.price}</span>
         <div className='cart-item-counter'>
         <div><CounterComponent item = {item} updatePriceandCount={updatePriceandCount}/>
           <div className='cart-actions'>

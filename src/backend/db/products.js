@@ -509,5 +509,79 @@ export const products = [
     privacyStatement:"Conditions and restrictions apply. See https://www.ea.com/games/fifa/fifa-23/game-offer-and-disclaimers for details. *Requires internet connection to download. **Available starting Nov 11th. ©2022 Electronic Arts Inc. EA, EA SPORTS, and the EA SPORTS logo are trademarks of Electronic Arts Inc. Official FIFA licensed product. © FIFA and FIFA's Official Licensed Product Logo are copyrights and/or trademarks of FIFA. All rights reserved. Manufactured under license by Electronic Arts Inc."
 
   },
+  {
+    _id: "x195",
+    title: "Horizon Chase Turbo",
+    developer: "AQUIRIS",
+    publisher:"AQUIRIS",
+    releaseDate:"06-24-21",
+    price: 589,
+    categoryName: ["Racing"],
+    rating:4,
+    thumbnail:"https://cdn1.epicgames.com/salesEvent/salesEvent/EGS_HorizonChaseTurbo_AQUIRIS_S2_1200x1600-7b51e6b8f8cf6ebd50f5fb77be96ad9d?h=480&quality=medium&resize=1&w=360",
+    
+     productDetailsImages:["https://cdn2.unrealengine.com/egs-horizonchaseturbo-aquiris-g1a-04-1920x1080-4dfa6cc2fb11.jpg","https://cdn2.unrealengine.com/egs-horizonchaseturbo-aquiris-g1a-05-1920x1080-1eba7e94bff3.jpg","https://cdn2.unrealengine.com/egs-horizonchaseturbo-aquiris-g1a-06-1920x1080-0e34536da38e.jpg"],
+     description:"Horizon Chase Turbo is a racing game inspired by the great hits of the 80's and 90's. It recreates the classic arcade gameplay with unbound speed limits of fun. Full throttle on and enjoy!",
+     longDesc:"orizon Chase Turbo is a racing game inspired by the great hits of the 80's and 90's: Out Run, Top Gear (SNES), Rush, among others. It recreates classic arcade gameplay and offers you unbound speed limits of fun.Horizon Chase Turbo offers a Multiplayer Split Screen mode that rescues the nostalgia of playing with your best friends sitting on a couch all night long.",
+
+     specifications:{
+      minimum:[{os:"Windows 10 64-bit"},
+        {processor:"Intel Core 2 Duo 2.0 GHz or better"},
+        {memory:"2GB"},
+        {storage:"500MB"},
+        {directx:"12"},
+        {graphics:"Intel HD Graphics 4000 or better"}
+    ],
+      recommended:[
+       { os:"64-bit Windows 10/11"},
+       { processor:"Intel Core i5 2.5 GHz or better"},
+        {memory:"4GB"},
+        {storage:"500MB"},
+       { directx:"12"},
+        {graphics:"GeForce 8000 Series or better"}
+    ]
+      
+    },
+
+    privacyStatement:"Conditions and restrictions apply. See https://www.ea.com/games/fifa/fifa-23/game-offer-and-disclaimers for details. *Requires internet connection to download. **Available starting Nov 11th. ©2022 Electronic Arts Inc. EA, EA SPORTS, and the EA SPORTS logo are trademarks of Electronic Arts Inc. Official FIFA licensed product. © FIFA and FIFA's Official Licensed Product Logo are copyrights and/or trademarks of FIFA. All rights reserved. Manufactured under license by Electronic Arts Inc."
+
+  },
+  {
+    _id: "x196",
+    title: "iRacing",
+    developer: "iRacing",
+    publisher:"iRacing",
+    releaseDate:"06-24-21",
+    price: 399,
+    categoryName: ["Racing","Simulation"],
+    rating:4.6,
+    thumbnail:"https://cdn1.epicgames.com/offer/1d3e38b5e921433caffbbef89e265517/EGS_iRacing3monthnewmembership_iRacing_S2_1200x1600-21799332008e2134440205da0c787ce3?h=480&quality=medium&resize=1&w=360",
+    
+     productDetailsImages:["https://cdn2.unrealengine.com/egs-iracing-iracing-g1a-00-1920x1080-38dd57724d03.jpg","https://cdn2.unrealengine.com/egs-iracing-iracing-g1a-01-1920x1080-8f071b4d5f65.jpg","https://cdn2.unrealengine.com/egs-iracing-iracing-g1a-02-1920x1080-b14e5d9b8b50.jpg"],
+     description:"The world’s premier racing simulation/game. Membership provides access to the iRacing community and unlimited racing. NASCAR, open-wheel, sportscars, dirt, rallycross & more. Purchase a 3-month iRacing membership today!",
+     longDesc:"Only new iRacing accounts can be purchased through EGS. Once an iRacing account is created through EGS, subsequent renewals are done directly through the iRacing site and are at regular iRacing prices. Special, introductory pricing on EGS is only for new accounts and pricing is subject to change. A valid Credit Card or Paypal account is required for account creation. With all accounts created there is a temporary charge of $1 placed on your Credit Card or Paypal account. This is used for account verification only and is refunded once confirmed.",
+
+     specifications:{
+      minimum:[{os:"Windows 10 64-bit"},
+        {processor:"4 core or better"},
+        {memory:"16 GB RAM"},
+        {storage:"25 GB"},
+        {directx:"12"},
+        {graphics:"2 GB Dedicated memory"}
+    ],
+      recommended:[
+       { os:"Windows 11"},
+       { processor:"8 core or better"},
+        {memory:"32 GB RAM"},
+        {storage:"50 GB"},
+       { directx:"12"},
+        {graphics:"8 GB dedicated memory"}
+    ]
+      
+    },
+
+    privacyStatement:"Copyright © 2020 iRacing.com Motorsport Simulations, LLC. All Rights Reserved."
+
+  },
 
 ];

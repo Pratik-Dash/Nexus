@@ -21,7 +21,7 @@ const Wishlist = () => {
      <div className='wishlist-item-info'>
         <div className='wishlist-title-and-pricing'>
             <span>{item.title}</span>
-            <span>{item.price}</span>
+            <span>₹{item.price}</span>
         </div>
         <div className='wishlist-action-buttons'>
             <div onClick={() => removeItemFromWishlist(item)}>{!wishlistloading?`REMOVE`:<ClipLoader color="#09b9b9" size={10}/>}</div>

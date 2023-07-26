@@ -445,16 +445,16 @@
   text-decoration: none;
   color: var(--accent);
 }
-.specification-container{
+ .requirements{
+
   width: 100%;
-   
-   box-sizing: border-box;
-   display: flex;
-   padding: 1.5rem;
-   background-color: var(--secondary);
-   font-size: small;
-   margin-bottom: 20px;
-  
+   justify-content: space-evenly;
+  box-sizing: border-box;
+  display: flex;
+  padding: 1.5rem;
+  background-color: var(--secondary);
+  font-size: small;
+  margin-bottom: 20px;
  }
 
  .action-buttons{

@@ -4,7 +4,9 @@ const Specs = ({product}) => {
     const{specifications:{minimum,recommended}} = product
    
   return (
+  
     <div className='specification-container'>
+    <div className='requirements'>
       <div className='min-req'>
         <div className='specs-headers'>Minimum</div>
         {
@@ -32,8 +34,13 @@ const Specs = ({product}) => {
              )
         }
       </div>
-      <div></div>
+     
+      </div>
+     
     </div>
+ 
+     
+
   )
 }
 
